@@ -1,0 +1,3 @@
+浏览器一直显示这个错误
+
+Cannot load JDBC driver class 'com.mysql.jdbc.Driver' 
