@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="student" class="test.Student">
+		<property name="name">
+			<value>张三</value>
+		</property>
+	</bean>
+	<bean id="teacher" class="test.Teacher">
+		<constructor-arg>
+			<value>李老师</value>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="student"></ref>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="goAdvice" class="test.GoAdvice">
+	</bean>
+	<bean id="teacher1" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames">
+			<list>
+				<value>goAdvice</value>
+			</list>
+		</property>
+		<property name="target">
+			<ref bean="teacher"/>
+		</property>
+	</bean>
+</beans>
